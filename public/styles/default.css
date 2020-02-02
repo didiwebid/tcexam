@@ -987,3 +987,28 @@ span.accesskey {
 	text-align:right !important;
 }
 
+input.tb_soal {
+	width: 40px;
+	height: 40px;
+	margin: 3px;
+}
+.tb_toggle {
+	margin: 0 3px 0 3px;
+}
+input.dijawab {
+	background-color: #0f0;
+}
+
+input.belum_dijawab {
+	background-color: #fff;
+}
+#box_daftar_soal {
+	position: fixed;
+	top: 62px;
+	right: 0;
+	background: #003399;
+	border: 5px solid #003399;
+}
+#daftar_soal {
+	
+}
