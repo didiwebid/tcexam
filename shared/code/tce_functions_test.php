@@ -1936,14 +1936,12 @@ function F_questionsMenu($testdata, $testuser_id, $testlog_id = 0, $disable = fa
         while ($m = F_db_fetch_array($r)) {
             ++$i;
             if ($m['testlog_id'] != $testlog_id) {
-                $str .= '<li>';
-                $str .= '<input type="submit" name="jumpquestion_'.$m['testlog_id'].'" id="jumpquestion_'.$m['testlog_id'].'" value="&gt;" title="'.F_tcecodeToTitle($m['question_description']).'" /> ';
+                $str .= '<input type="submit" name="jumpquestion_'.$m['testlog_id'].'" id="jumpquestion_'.$m['testlog_id'].'" value="' . $i . '"';
                 if ($testlog_id_last == $testlog_id) {
                     $testlog_id_next = $m['testlog_id'];
                 }
             } else {
-                $str .= '<li class="selected">';
-                $str .= '<input type="button" name="jumpquestion_'.$m['testlog_id'].'" id="jumpquestion_'.$m['testlog_id'].'" value="&gt;" title="'.F_tcecodeToTitle($m['question_description']).'" disabled="disabled"/> ';
+                $str .= '<input type="button" name="jumpquestion_'.$m['testlog_id'].'" id="jumpquestion_'.$m['testlog_id'].'" value="' . $i . '" disabled="disabled"';
                 $testlog_id_prev = $testlog_id_last;
                 $question_timer = F_getBoolean($m['question_timer']);
                 $qsel = $i;
@@ -1952,6 +1950,7 @@ function F_questionsMenu($testdata, $testuser_id, $testlog_id = 0, $disable = fa
                 }
             }
             // display mark when the current question has been displayed
+            /* 
             $str .= '<acronym';
             if (!empty($m['testlog_display_time'])) {
                 $str .= ' class="onbox"';
@@ -1963,8 +1962,9 @@ function F_questionsMenu($testdata, $testuser_id, $testlog_id = 0, $disable = fa
             $str .= '</acronym>';
 
             $str .= '&nbsp;';
-
+			*/
             // show mark when the current question has been answered
+            /*
             $str .= '<acronym';
             if (!empty($m['testlog_change_time'])) {
                 $str .= ' class="onbox"';
@@ -1973,21 +1973,29 @@ function F_questionsMenu($testdata, $testuser_id, $testlog_id = 0, $disable = fa
                 $str .= ' class="offbox"';
                 $str .= ' title="'.$l['h_question_not_answered'].'">-';
             }
+        
             $str .= '</acronym>';
             $str .= '&nbsp;';
-            // show question score
-            $n_question_score = $testdata['test_score_right'] * $m['question_difficulty'];
+            */
+        	$str .= ' class="tb_soal ' . ((!empty($m['testlog_change_time'])) ? 'dijawab' : 'belum_dijawab') . '"';
+        	$str .= ' title="SOAL INI ' . ((!empty($m['testlog_change_time'])) ? 'SUDAH DIJAWAB' : 'BELUM DIJAWAB') . '"';
+        	// show question score
+            /*
+             * $n_question_score = $testdata['test_score_right'] * $m['question_difficulty'];
             $str .= '<acronym class="offbox" title="'.$l['w_max_score'].': '.$n_question_score.'">';
             $str .= sprintf('% 5.1f', $n_question_score);
             $str .= '</acronym>';
             $str .= '&nbsp;';
+            */
             if ($testlog_id == 0) {
                 $testlog_id = $m['testlog_id'];
                 $testlog_id_last = $testlog_id;
             }
             $testlog_id_last = $m['testlog_id'];
-            $str .= F_tcecodeToLine($m['question_description']);
-            $str .= '</li>'.K_NEWLINE;
+            
+            //$str .= F_tcecodeToLine($m['question_description']);
+            $str .= '/>'.K_NEWLINE;
+        	if ($i % 5 == 0) $str .= '<br/>';
         }
     } else {
         F_display_db_error();
@@ -2033,11 +2041,14 @@ function F_questionsMenu($testdata, $testuser_id, $testlog_id = 0, $disable = fa
     if (F_getBoolean($testdata['test_menu_enabled']) and (!$disable)) {
         // display questions menu
         $rstr .= '<a name="questionssection" id="questionssection"></a>'.K_NEWLINE;
-        $rstr .= '<div class="tcecontentbox">'.K_NEWLINE; //fieldset
-        //$rstr .= '<legend>';
-        $rstr .= $l['w_questions'];
+        //$rstr .= '<div class="tcecontentbox">'.K_NEWLINE; //fieldset
+        $rstr .= '<script>function sembunyikan_daftar(){var n=document.getElementById("daftar_soal");"none"===n.style.display?n.style.display="block":n.style.display="none"}</script>';
+        $rstr .= '<div id="box_daftar_soal"><input type="button" class="tb_toggle" value="&Xi; DAFTAR SOAL" title="Klik di sini untuk melihat / menyembunyikan daftar soal" onclick="sembunyikan_daftar()"/>';
+    	//$rstr .= '<legend>';
+        //$rstr .= $l['w_questions'];
         //$rstr .= '</legend>'.K_NEWLINE;
-        $rstr .= '<ol class="qlist">'.K_NEWLINE.$str.'</ol>'.K_NEWLINE;
+        //$rstr .= '<ol class="qlist">'.K_NEWLINE.$str.'</ol>'.K_NEWLINE;
+        $rstr .= '<div id="daftar_soal" style="display:none">' . $str . '</div>';
         $rstr .= '</div>'.K_NEWLINE; //fieldset
         $rstr .= '<br />'.K_NEWLINE;
     }
