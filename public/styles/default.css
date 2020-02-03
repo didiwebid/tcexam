@@ -130,7 +130,7 @@ blockquote.tcecode{
 }
 
 body {
-	background-color: #FFFFFF;
+	background: #fff url('../../images/grey.png');
 	color: #000000;
 	font-family: Arial,FreeSans,sans-serif;
 	font-size: 100%;
