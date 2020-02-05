@@ -1977,8 +1977,15 @@ function F_questionsMenu($testdata, $testuser_id, $testlog_id = 0, $disable = fa
             $str .= '</acronym>';
             $str .= '&nbsp;';
             */
-        	$str .= ' class="tb_soal ' . ((!empty($m['testlog_change_time'])) ? 'dijawab' : 'belum_dijawab') . '"';
-        	$str .= ' title="SOAL INI ' . ((!empty($m['testlog_change_time'])) ? 'SUDAH DIJAWAB' : 'BELUM DIJAWAB') . '"';
+        	if (!empty($m['testlog_change_time'])) {
+            	$str .= ' class="tb_soal dijawab"';
+            	$str .= ' title="SOAL INI SUDAH DIJAWAB"';
+            } elseif (!empty($m['testlog_display_time'])) {
+            	$str .= ' class="tb_soal tampil"';
+            	$str .= ' title="SOAL INI SUDAH DILIHAT TETAPI BELUM DIJAWAB"';
+            }
+        	//$str .= ' class="tb_soal ' . ((!empty($m['testlog_change_time'])) ? 'dijawab' : 'belum_dijawab') . '"';
+        	//$str .= ' title="SOAL INI ' . ((!empty($m['testlog_change_time'])) ? 'SUDAH DIJAWAB' : 'BELUM DIJAWAB') . '"';
         	// show question score
             /*
              * $n_question_score = $testdata['test_score_right'] * $m['question_difficulty'];
