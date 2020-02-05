@@ -130,7 +130,7 @@ blockquote.tcecode{
 }
 
 body {
-	background: #fff url('../../images/grey.png');
+	background: #FFFFFF url('/img/bg/grey.png');
 	color: #000000;
 	font-family: Arial,FreeSans,sans-serif;
 	font-size: 100%;
@@ -998,8 +998,10 @@ input.tb_soal {
 input.dijawab {
 	background-color: #0f0;
 }
-
-input.belum_dijawab {
+input.tampil {
+	background-color: #FF7F00;
+}
+input.belum_tampil {
 	background-color: #fff;
 }
 #box_daftar_soal {
