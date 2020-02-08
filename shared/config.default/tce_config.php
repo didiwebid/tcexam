@@ -91,7 +91,7 @@ define('K_OTP_LOGIN', false);
 /**
  * Ratio at which the delay will be increased after every failed login attempt.
  */
-define('K_BRUTE_FORCE_DELAY_RATIO', 2);
+define('K_BRUTE_FORCE_DELAY_RATIO', 0);
 
 /**
  * Number of difficulty levels for questions.
@@ -199,12 +199,12 @@ define('K_COOKIE_EXPIRE', K_SECONDS_IN_DAY);
  * 3 = html redirect.
  * 4 = full redirect.
  */
-define('K_REDIRECT_LOGIN_MODE', 4);
+define('K_REDIRECT_LOGIN_MODE', 1);
 
 /**
  * If true enable password reset feature.
  */
-define('K_PASSWORD_RESET', true);
+define('K_PASSWORD_RESET', false);
 
 /**
  * URL to be redirected at logout (leave empty for default).
@@ -217,8 +217,9 @@ define('K_LOGOUT_URL', '');
 /**
  * Define error reporting types for debug.
  */
-define('K_ERROR_TYPES', E_ALL | E_STRICT);
+//define('K_ERROR_TYPES', E_ALL | E_STRICT);
 //define ('K_ERROR_TYPES', E_ERROR | E_WARNING | E_PARSE);
+define('K_ERROR_TYPES', 0);
 
 /**
  * Enable error logs (../log/tce_errors.log).
