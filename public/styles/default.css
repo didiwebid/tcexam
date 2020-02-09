@@ -988,29 +988,34 @@ span.accesskey {
 }
 
 input.tb_soal {
-	width: 40px;
-	height: 40px;
-	margin: 3px;
+	width: 30px;
+	height: 30px;
+	border: 1px solid green;
+	float: left;
 }
 .tb_toggle {
-	margin: 0 3px 0 3px;
+	margin-bottom: 3px;
 }
 input.dijawab {
 	background-color: #0f0;
 }
 input.tampil {
-	background-color: #FF7F00;
+	background-color: #ff0;
 }
 input.belum_tampil {
 	background-color: #fff;
 }
 #box_daftar_soal {
 	position: fixed;
-	top: 62px;
+	/*top: 62px;*/
+	bottom: 0;
 	right: 0;
 	background: #003399;
 	border: 5px solid #003399;
 }
 #daftar_soal {
-	
+}
+input:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
 }
