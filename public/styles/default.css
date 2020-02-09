@@ -995,6 +995,7 @@ input.tb_soal {
 }
 .tb_toggle {
 	margin-bottom: 3px;
+	width: 150px;
 }
 input.dijawab {
 	background-color: #0f0;
