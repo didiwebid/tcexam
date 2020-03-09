@@ -57,7 +57,7 @@ define('K_MAX_UPLOAD_SIZE', 25000000);
  * List of allowed file types for upload (remove all extensions to disable upload).
  * FOR SERVER SECURITY DO NOT ADD EXECUTABLE FILE TYPES HERE
  */
-define('K_ALLOWED_UPLOAD_EXTENSIONS', serialize(array('csv', 'tsv', 'xml', 'txt', 'png', 'gif', 'jpg', 'jpeg', 'svg', 'mp3', 'mid', 'oga', 'ogg', 'wav', 'wma', 'avi', 'flv', 'm2v', 'mpeg', 'mpeg4', 'mpg', 'mpg2', 'mpv', 'ogm', 'ogv', 'vid', 'pfx', 'pem', 'crt')));
+define('K_ALLOWED_UPLOAD_EXTENSIONS', serialize(array('csv', 'tsv', 'xml', 'txt', 'png', 'gif', 'jpg', 'jpeg', 'svg', 'mp3', 'mid', 'oga', 'ogg', 'wav', 'wma', 'avi', 'flv', 'm2v', 'mpeg', 'mpeg4', 'mp4', 'mpg', 'mpg2', 'mpv', 'ogm', 'ogv', 'vid', 'pfx', 'pem', 'crt')));
 
 // -- DEFAULT META and BODY Tags --
 
