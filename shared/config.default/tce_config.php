@@ -305,7 +305,7 @@ if (PHP_VERSION_ID < 50300) {
 // --- get 'post', 'get' and 'cookie' variables
 foreach ($_REQUEST as $postkey => $postvalue) {
     if (($postkey[0] != '_') and (!preg_match('/[A-Z]/', $postkey[0]))) {
-        //if (!function_exists('get_magic_quotes_gpc') or !get_magic_quotes_gpc()) {
+        if (!function_exists('get_magic_quotes_gpc') or (PHP_VERSION_ID >= 70400) or !get_magic_quotes_gpc()) {
             $postvalue = addSlashesArray($postvalue);
             $_REQUEST[$postkey] = $postvalue;
             if (isset($_GET[$postkey])) {
@@ -315,7 +315,7 @@ foreach ($_REQUEST as $postkey => $postvalue) {
             } elseif (isset($_COOKIE[$postkey])) {
                 $_COOKIE[$postkey] = $postvalue;
             }
-        //}
+        }
         $$postkey = $postvalue;
     }
 }
