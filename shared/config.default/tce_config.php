@@ -2,7 +2,6 @@
 //============================================================+
 // File name   : tce_config.php
 // Begin       : 2002-02-24
-// Last Update : 2019-04-30
 // Last Update : 2020-04-01
 //
 // Description : Shared configuration file.
