@@ -295,6 +295,21 @@ function utrim($txt)
 }
 
 /**
+ * For some web servers behind cloudflare, sometimes it's hard to determine real IP address of online users.
+ * https://stackoverflow.com/questions/13646690/how-to-get-real-ip-from-visitor
+ */
+function getUserRealIP() {
+    if (isset($_SERVER["HTTP_CF_CONNECTING_IP"])) {
+                $_SERVER['REMOTE_ADDR'] = $_SERVER["HTTP_CF_CONNECTING_IP"];
+                $_SERVER['HTTP_CLIENT_IP'] = $_SERVER["HTTP_CF_CONNECTING_IP"];
+    }
+    $client  = @$_SERVER['HTTP_CLIENT_IP'];
+    $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+    $remote  = $_SERVER['REMOTE_ADDR'];
+    return filter_var($client, FILTER_VALIDATE_IP) ? $client : (filter_var($forward, FILTER_VALIDATE_IP) ? $forward : $remote);
+}
+
+/**
  * Convert all IP addresses to IPv6 expanded notation.
  * @param $ip (string) IP address to normalize.
  * @return string IPv6 address in expanded notation or false in case of invalid input.
