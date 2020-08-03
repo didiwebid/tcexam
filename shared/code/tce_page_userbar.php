@@ -40,7 +40,7 @@ echo '</div>'.K_NEWLINE;
 echo '<div class="userbar">'.K_NEWLINE;
 if ($_SESSION['session_user_level'] > 0) {
     // display user information
-    echo '<span title="'.$l['h_user_info'].'">'.$l['w_user'].': '.$_SESSION['session_user_name'].'</span>';
+    echo '<span title="'.$l['h_user_info'].'">'.$l['w_user'].': '.$_SESSION['session_user_name']. (!empty($_SESSION['session_user_firstname']) ? (' (' . str_replace('+', ' ', $_SESSION['session_user_firstname'] . (!empty($_SESSION['session_user_lastname']) ? (' ' . $_SESSION['session_user_lastname']) : '')) . ')') : '') . '</span>';
     // display logout link
     echo ' <a href="tce_logout.php" class="logoutbutton" title="'.$l['h_logout_link'].'" onclick="return confirm(\''.$l['w_logout'].' ?\')">'.$l['w_logout'].'</a>'.K_NEWLINE;
 } else {
